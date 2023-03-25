@@ -7,15 +7,17 @@ class RoomItem extends StatelessWidget {
   final int connectedDevices;
   final int temperature;
   final int humidity;
+  final Function onClick;
 
-  const RoomItem(
-      {Key? key,
-      required this.name,
-      required this.image,
-      required this.connectedDevices,
-      required this.temperature,
-      required this.humidity})
-      : super(key: key);
+  const RoomItem({
+    Key? key,
+    required this.name,
+    required this.image,
+    required this.connectedDevices,
+    required this.temperature,
+    required this.humidity,
+    required this.onClick,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,21 +29,26 @@ class RoomItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(40),
         ),
         clipBehavior: Clip.antiAlias,
-        child: Stack(
-          children: [
-            _buildRoomImage(),
-            Positioned(
-              right: 12,
-              left: 12,
-              bottom: 16,
-              child: RoomDetailsCard(
-                name: name,
-                connectedDevices: connectedDevices,
-                temperature: temperature,
-                humidity: humidity,
-              ),
-            )
-          ],
+        child: GestureDetector(
+          onTap: () => {
+            onClick.call(),
+          },
+          child: Stack(
+            children: [
+              _buildRoomImage(),
+              Positioned(
+                right: 12,
+                left: 12,
+                bottom: 16,
+                child: RoomDetailsCard(
+                  name: name,
+                  connectedDevices: connectedDevices,
+                  temperature: temperature,
+                  humidity: humidity,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

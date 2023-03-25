@@ -21,13 +21,6 @@ class SmartHomeAppBar extends StatelessWidget {
         clipBehavior: Clip.none,
         alignment: Alignment.centerLeft,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {},
-            style: IconButton.styleFrom(
-              backgroundColor: Colors.white,
-            ),
-          ),
           SizedBox(
             width: double.infinity,
             child: Text(
@@ -38,6 +31,15 @@ class SmartHomeAppBar extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
               textAlign: TextAlign.center,
+            ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            style: IconButton.styleFrom(
+              backgroundColor: Colors.white,
             ),
           ),
           if (isShutdownButtonVisible == true)

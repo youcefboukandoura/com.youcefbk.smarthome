@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             const HomeAppBar(),
-            const RoomsListView(),
+            RoomsListView(),
             _buildAddDevicesToolbar(),
             _buildDevices(),
           ],
@@ -27,41 +27,41 @@ class HomeScreen extends StatelessWidget {
 
   Column _buildDevices() {
     return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    SmallDeviceCard(
-                      name: 'Homepod Mini',
-                      deviceImage: 'assets/images/homepod-mini.png',
-                      count: 2,
-                      isActive: true,
-                    ),
-                    SizedBox(
-                      width: 16,
-                    ),
-                    SmallDeviceCard(
-                      name: 'Smart Light',
-                      deviceImage: 'assets/images/smart-light.png',
-                      count: 3,
-                      isActive: false,
-                    ),
-                  ],
-                ),
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              SmallDeviceCard(
+                name: 'Homepod Mini',
+                deviceImage: 'assets/images/homepod-mini.png',
+                count: 2,
+                isActive: true,
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
-                child: LongDeviceCard(
-                  name: 'Vacuum cleaner',
-                  deviceImage: 'assets/images/vacuum-cleaner.png',
-                  count: 1,
-                  isActive: false,
-                ),
+              SizedBox(
+                width: 16,
+              ),
+              SmallDeviceCard(
+                name: 'Smart Light',
+                deviceImage: 'assets/images/smart-light.png',
+                count: 3,
+                isActive: false,
               ),
             ],
-          );
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
+          child: LongDeviceCard(
+            name: 'Vacuum cleaner',
+            deviceImage: 'assets/images/vacuum-cleaner.png',
+            count: 1,
+            isActive: false,
+          ),
+        ),
+      ],
+    );
   }
 
   Padding _buildAddDevicesToolbar() => Padding(

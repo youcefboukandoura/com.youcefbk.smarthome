@@ -6,6 +6,7 @@ import 'package:smarthome/ui/widgets/SmartHomeAppBar.dart';
 import 'widget/mood_list_view.dart';
 
 class AirConditionsScreen extends StatefulWidget {
+  static const routeName = '/air-conditions';
   const AirConditionsScreen({Key? key}) : super(key: key);
 
   @override

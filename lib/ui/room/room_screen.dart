@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:smarthome/data/model/room.dart';
+import 'package:smarthome/ui/airconditions/air_conditions_screen.dart';
 import 'package:smarthome/ui/room/widget/room_bubble_widget.dart';
 import 'package:smarthome/ui/widgets/SmartHomeAppBar.dart';
 
 import 'shapes/device_title_shape.dart';
 
-class RoomScreen extends StatelessWidget {
-  const RoomScreen({Key? key}) : super(key: key);
+class RoomScreen extends StatefulWidget {
+  static const routeName = '/room';
+
+  RoomScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RoomScreen> createState() => _RoomScreenState();
+}
+
+class _RoomScreenState extends State<RoomScreen> {
+  late Room _room;
 
   @override
   Widget build(BuildContext context) {
+    _room = ModalRoute.of(context)?.settings.arguments as Room;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -19,12 +32,14 @@ class RoomScreen extends StatelessWidget {
             child: SafeArea(
               child: Stack(
                 children: [
-                  const SmartHomeAppBar(
-                    title: 'Bedroom AR',
+                  SmartHomeAppBar(
+                    title: _room.name,
                     titleColor: Colors.white,
                     isShutdownButtonVisible: false,
                   ),
-                  _buildPositionedAirConditioner(),
+                  if(_room.name == 'Bedroom AR')
+                  _buildPositionedAirConditioner(context),
+                  if(_room.name == 'Bedroom AR')
                   _buildPositionLamp(),
                   _buildPositionedNavigationWidget(),
                   _buildPositionedFloatingActionButton(),
@@ -75,14 +90,14 @@ class RoomScreen extends StatelessWidget {
     );
   }
 
-  Positioned _buildPositionedAirConditioner() {
+  Positioned _buildPositionedAirConditioner(BuildContext context) {
     return Positioned(
       top: 163,
       left: 36,
       child: buildDeviceContainer(
-        'Air Conditioner',
-        'assets/images/air-conditioning.png',
-      ),
+          'Air Conditioner', 'assets/images/air-conditioning.png', () {
+        Navigator.of(context).pushNamed(AirConditionsScreen.routeName);
+      }),
     );
   }
 
@@ -90,10 +105,7 @@ class RoomScreen extends StatelessWidget {
     return Positioned(
       top: 321,
       left: 160,
-      child: buildDeviceContainer(
-        'Lamp',
-        'assets/images/lamp.png',
-      ),
+      child: buildDeviceContainer('Lamp', 'assets/images/lamp.png', null),
     );
   }
 
@@ -102,39 +114,44 @@ class RoomScreen extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         child: Image.asset(
-          'assets/images/bedroom.png',
+          _room.image,
           fit: BoxFit.fitHeight,
         ));
   }
 
-  Widget buildDeviceContainer(String title, String asset) =>
-      Stack(clipBehavior: Clip.none, children: [
-        Positioned(
-          top: 20,
-          left: 55,
-          child: CustomPaint(
-            size: Size(75, (75 * 0.5324675324675324).toDouble()),
-            painter: DeviceTitleShape(title: title),
-          ),
-        ),
-        Container(
-          width: 110,
-          height: 110,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Color(0x4D171F46),
-          ),
-          child: Center(
-            child: Container(
-              width: 56,
-              height: 56,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.blue,
-              ),
-              child: Image.asset(asset),
+  Widget buildDeviceContainer(String title, String asset, Function? onClick) =>
+      GestureDetector(
+        onTap: () {
+          onClick?.call();
+        },
+        child: Stack(clipBehavior: Clip.none, children: [
+          Positioned(
+            top: 20,
+            left: 55,
+            child: CustomPaint(
+              size: Size(75, (75 * 0.5324675324675324).toDouble()),
+              painter: DeviceTitleShape(title: title),
             ),
           ),
-        ),
-      ]);
+          Container(
+            width: 110,
+            height: 110,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Color(0x4D171F46),
+            ),
+            child: Center(
+              child: Container(
+                width: 56,
+                height: 56,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.blue,
+                ),
+                child: Image.asset(asset),
+              ),
+            ),
+          ),
+        ]),
+      );
 }
