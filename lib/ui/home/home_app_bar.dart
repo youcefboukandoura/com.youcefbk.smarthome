@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smarthome/ui/theme/color.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class HomeAppBar extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildTitle(),
+                _buildTitle(context),
                 _buildSubtitle(),
               ],
             ),
@@ -31,7 +32,7 @@ class HomeAppBar extends StatelessWidget {
         ),
         child: const Icon(
           Icons.notifications_outlined,
-          color: Color(0xff171F46),
+          color: colorDarkBlue,
         ),
         onPressed: () {},
       );
@@ -40,19 +41,15 @@ class HomeAppBar extends StatelessWidget {
         'Welcome back again.',
         textAlign: TextAlign.start,
         style: GoogleFonts.urbanist(
-          color: const Color(0xff171F46),
+          color: colorDarkBlue,
           fontSize: 14,
           fontWeight: FontWeight.w400,
         ),
       );
 
-  Text _buildTitle() => Text(
+  Text _buildTitle(BuildContext context) => Text(
         'Hello Design Monks',
-        style: GoogleFonts.urbanist(
-          color: const Color(0xff171F46),
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-        ),
+        style: Theme.of(context).textTheme.titleMedium,
         textAlign: TextAlign.start,
       );
 }

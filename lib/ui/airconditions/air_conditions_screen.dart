@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_slider/flutter_circular_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smarthome/ui/theme/color.dart';
 import 'package:smarthome/ui/widgets/SmartHomeAppBar.dart';
 
 import 'widget/mood_list_view.dart';
 
 class AirConditionsScreen extends StatefulWidget {
   static const routeName = '/air-conditions';
+
   const AirConditionsScreen({Key? key}) : super(key: key);
 
   @override
@@ -30,9 +32,9 @@ class _AirConditionsScreenState extends State<AirConditionsScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const SmartHomeAppBar(
+             SmartHomeAppBar(
               title: 'Air Conditions',
-              titleColor: Color(0xff171F46),
+              titleColor: colorDarkBlue,
               isShutdownButtonVisible: true,
             ),
             _buildRoomsChips(),
@@ -158,16 +160,18 @@ class _AirConditionsScreenState extends State<AirConditionsScreen> {
                     Text(
                       '0',
                       style: GoogleFonts.urbanist(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff171F46)),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: colorDarkBlue,
+                      ),
                     ),
                     Text(
                       '18',
                       style: GoogleFonts.urbanist(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff171F46)),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: colorDarkBlue,
+                      ),
                     ),
                   ],
                 )
@@ -184,9 +188,10 @@ class _AirConditionsScreenState extends State<AirConditionsScreen> {
         text,
         textAlign: TextAlign.start,
         style: GoogleFonts.urbanist(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: const Color(0xff171F46)),
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: colorDarkBlue,
+        ),
       ),
     );
   }

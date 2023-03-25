@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smarthome/ui/theme/color.dart';
 
 class TextBubbleWidget extends StatelessWidget {
   final String text;
@@ -10,13 +11,13 @@ class TextBubbleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xff171F46).withOpacity(0.1),
+        color: colorDarkBlue.withOpacity(0.1),
         borderRadius: const BorderRadius.all(Radius.circular(60)),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
         child: Text(
-         text,
+          text,
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.urbanist(
             color: Colors.white,

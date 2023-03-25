@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smarthome/ui/theme/color.dart';
 
 class LongDeviceCard extends StatefulWidget {
   final String name;
@@ -64,7 +65,7 @@ class _LongDeviceCardState extends State<LongDeviceCard> {
                   Text(
                     widget.name,
                     style: GoogleFonts.urbanist(
-                      color: const Color(0xff171F46),
+                      color: colorDarkBlue,
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
                     ),

@@ -47,15 +47,16 @@ class RoomsListView extends StatelessWidget {
         children: _rooms
             .map(
               (item) => RoomItem(
-                  name: item.name,
-                  image: item.image,
-                  connectedDevices: item.connectedDevices,
-                  temperature: item.temperature,
-                  humidity: item.humidity,
-                  onClick: () {
-                    Navigator.of(context)
-                        .pushNamed(RoomScreen.routeName, arguments: item);
-                  }),
+                name: item.name,
+                image: item.image,
+                connectedDevices: item.connectedDevices,
+                temperature: item.temperature,
+                humidity: item.humidity,
+                onClick: () {
+                  Navigator.of(context)
+                      .pushNamed(RoomScreen.routeName, arguments: item);
+                },
+              ),
             )
             .toList(),
       ),
