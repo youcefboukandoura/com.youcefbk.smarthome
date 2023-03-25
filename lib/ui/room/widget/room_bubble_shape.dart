@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-//Add this CustomPaint widget to the Widget Tree
-
-//Copy this CustomPainter code to the Bottom of the File
 class RoomBubbleShape extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

@@ -9,7 +9,7 @@ import 'shapes/device_title_shape.dart';
 class RoomScreen extends StatefulWidget {
   static const routeName = '/room';
 
-  RoomScreen({Key? key}) : super(key: key);
+  const RoomScreen({Key? key}) : super(key: key);
 
   @override
   State<RoomScreen> createState() => _RoomScreenState();
@@ -37,10 +37,9 @@ class _RoomScreenState extends State<RoomScreen> {
                     titleColor: Colors.white,
                     isShutdownButtonVisible: false,
                   ),
-                  if(_room.name == 'Bedroom AR')
-                  _buildPositionedAirConditioner(context),
-                  if(_room.name == 'Bedroom AR')
-                  _buildPositionLamp(),
+                  if (_room.name == 'Bedroom AR')
+                    _buildPositionedAirConditioner(context),
+                  if (_room.name == 'Bedroom AR') _buildPositionLamp(),
                   _buildPositionedNavigationWidget(),
                   _buildPositionedFloatingActionButton(),
                 ],
@@ -124,34 +123,37 @@ class _RoomScreenState extends State<RoomScreen> {
         onTap: () {
           onClick?.call();
         },
-        child: Stack(clipBehavior: Clip.none, children: [
-          Positioned(
-            top: 20,
-            left: 55,
-            child: CustomPaint(
-              size: Size(75, (75 * 0.5324675324675324).toDouble()),
-              painter: DeviceTitleShape(title: title),
-            ),
-          ),
-          Container(
-            width: 110,
-            height: 110,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0x4D171F46),
-            ),
-            child: Center(
-              child: Container(
-                width: 56,
-                height: 56,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.blue,
-                ),
-                child: Image.asset(asset),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              top: 20,
+              left: 55,
+              child: CustomPaint(
+                size: Size(75, (75 * 0.5324675324675324).toDouble()),
+                painter: DeviceTitleShape(title: title),
               ),
             ),
-          ),
-        ]),
+            Container(
+              width: 110,
+              height: 110,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0x4D171F46),
+              ),
+              child: Center(
+                child: Container(
+                  width: 56,
+                  height: 56,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.blue,
+                  ),
+                  child: Image.asset(asset),
+                ),
+              ),
+            ),
+          ],
+        ),
       );
 }
