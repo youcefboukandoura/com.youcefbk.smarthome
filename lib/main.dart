@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smarthome/ui/room/room_screen.dart';
+import 'package:smarthome/ui/airconditions/air_conditions_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
       ),
-      home: const RoomScreen(),
+      home: const AirConditionsScreen(),
     );
   }
 }

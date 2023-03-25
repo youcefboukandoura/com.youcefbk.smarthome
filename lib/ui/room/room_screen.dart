@@ -21,6 +21,7 @@ class RoomScreen extends StatelessWidget {
                 children: [
                   const SmartHomeAppBar(
                     title: 'Bedroom AR',
+                    titleColor: Colors.white,
                     isShutdownButtonVisible: false,
                   ),
                   _buildPositionedAirConditioner(),

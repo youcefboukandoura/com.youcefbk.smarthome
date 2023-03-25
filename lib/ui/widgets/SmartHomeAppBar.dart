@@ -3,10 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SmartHomeAppBar extends StatelessWidget {
   final String title;
+  final Color titleColor;
   final bool? isShutdownButtonVisible;
 
   const SmartHomeAppBar({
     required this.title,
+    required this.titleColor,
     this.isShutdownButtonVisible,
     Key? key,
   }) : super(key: key);
@@ -31,7 +33,7 @@ class SmartHomeAppBar extends StatelessWidget {
             child: Text(
               title,
               style: GoogleFonts.urbanist(
-                color: Colors.white,
+                color: titleColor,
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
               ),
