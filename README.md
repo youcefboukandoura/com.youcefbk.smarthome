@@ -1,16 +1,18 @@
-# smarthome
+# SmartHome Application
 
 A smart home design application
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a practice on creating views on flutter.
+You can find the design link on https://www.uplabs.com/posts/smart-home-app-challange
 
-A few resources to get you started if this is your first Flutter project:
+## Home Screen
+![home.PNG](screenshots%2Fhome.PNG)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Room Screen
+![room.PNG](screenshots%2Froom.PNG)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## AirConditions Screen
+![airconditions.PNG](screenshots%2Fairconditions.PNG)
+
